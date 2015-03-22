@@ -41,7 +41,6 @@ namespace UnitTest
             CollectionAssert.AreEqual(resultado.ToArray(), teste);
 
         }
-
        
 
 
@@ -67,9 +66,9 @@ namespace UnitTest
 
             Assert.AreEqual(
                     @"<a class=""btn btn-default"" href=""Pagina1"">1</a>"
-                 + @"<a class=""btn btn-default btn-primary selected"" href=""Pagina2"">2</a>BBB"
-                 + @"<a class=""btn btn-default"" href=""Pagina3"">3</a>", resultado.ToString()
-                 );
+                    + @"<a class=""btn btn-default btn-primary selected"" href=""Pagina2"">2</a>"
+                    + @"<a class=""btn btn-default"" href=""Pagina3"">3</a>", resultado.ToString()
+                    );
 
 
 

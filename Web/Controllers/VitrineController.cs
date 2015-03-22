@@ -1,6 +1,7 @@
 ﻿using Dominio.Repositorio;
 using System.Linq;
 using System.Web.Mvc;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -8,17 +9,29 @@ namespace Web.Controllers
     {
         private ProdutosRepositorio _repositorio;
         public int ProdutosPorPagina = 8;
-        public ActionResult ListaProdutos(int pagina = 1)
+
+
+        public ViewResult ListaProdutos(int pagina = 1)
         {
             _repositorio = new ProdutosRepositorio();
-            var produtos = _repositorio.Produtos
-                .OrderBy(p => p.Descricao)
-                .Skip((pagina - 1) * ProdutosPorPagina)
-                .Take(ProdutosPorPagina);
 
+            ProdutosViewModel model = new ProdutosViewModel
+            {
 
+                Produtos = _repositorio.Produtos
+                    .OrderBy(p => p.Descricao)
+                    .Skip((pagina - 1) * ProdutosPorPagina)
+                    .Take(ProdutosPorPagina),
 
-            return View(produtos);
+                Paginacao = new Paginacao
+                {
+                    PaginaAtual = pagina,
+                    ItensPorPagina = ProdutosPorPagina,
+                    ItensTotal = _repositorio.Produtos.Count()
+                }
+            };
+
+            return View(model);
         }
     }
 }
