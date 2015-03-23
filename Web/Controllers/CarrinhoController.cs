@@ -1,7 +1,7 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using Dominio.Entidades;
+﻿using Dominio.Entidades;
 using Dominio.Repositorio;
+using System.Linq;
+using System.Web.Mvc;
 using Web.Models;
 
 namespace Web.Controllers
@@ -63,6 +63,17 @@ namespace Web.Controllers
                 Carrinho = ObterCarrinho(),
                 ReturnUrl = returnurl
             });
+        }
+
+        public PartialViewResult Resumo()
+        {
+            Carrinho carrinho = ObterCarrinho();
+            return PartialView(carrinho);
+        }
+
+        public ViewResult FecharPedido()
+        {
+            return View(new Pedido());
         }
     }
 }

@@ -23,7 +23,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Loja Virtual ONE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Loja Virtual ONE", "ListaProdutos", "Vitrine", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.Action("Resumo", "Carrinho")
             </div>
 
             <div class="navbar-collapse collapse">
