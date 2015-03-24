@@ -5,8 +5,6 @@
 }
 
 
-
-
 <h2>Fechar o pedido</h2>
 <p>Digite suas informações abaixo</p>
 @using (Html.BeginForm())
@@ -18,6 +16,8 @@
     <div class="form-group">
         <label>Nome do cliente:</label>
         @Html.TextBoxFor(x => x.NomeCliente, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.NomeCliente)
+
     </div>
 
     <h3>Dados para entrega</h3>
@@ -27,15 +27,14 @@
         if (property.PropertyName != "NomeCliente" && property.PropertyName != "EmbrulhaPresente")
         {
             <div class="form-group">
-
                 <label>
                     @(property.DisplayName ?? property.PropertyName)
                 </label>
-
                 @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
             </div>
         }
     }
+
 
 
     <h3>Opções</h3>
@@ -47,10 +46,11 @@
     </div>
 
     <input class="btn btn-primary" type="submit" value="Fechar o pedido" />
+
+    <hr />
+
 }
-
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-
 <script>
 
     $('#Cep').change(function (e) {
