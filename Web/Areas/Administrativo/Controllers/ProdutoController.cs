@@ -1,17 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Dominio.Entidades;
+using Dominio.Repositorio;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Web.Areas.Administrativo.Controllers
 {
     public class ProdutoController : Controller
     {
-        // GET: Administrativo/Produto
+
+        private ProdutosRepositorio _repositorio;
+
+
         public ActionResult Index()
         {
-            return View();
+            _repositorio = new ProdutosRepositorio();
+            var produtos = _repositorio.Produtos;
+            return View(produtos);
+        }
+
+
+        public ViewResult Alterar(int produtoId)
+        {
+            _repositorio = new ProdutosRepositorio();
+            Produto produto = _repositorio.Produtos
+                .FirstOrDefault(p => p.ProdutoId == produtoId);
+            return View(produto);
         }
     }
 }
