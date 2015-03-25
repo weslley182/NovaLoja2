@@ -65,10 +65,11 @@ namespace UnitTest
             //Assert
 
             Assert.AreEqual(
-                    @"<a class=""btn btn-default"" href=""/Web/"">1</a>"
-                    + @"<a class=""btn btn-default btn-primary selected"" href=""/Web/Pagina2"">2</a>"
-                    + @"<a class=""btn btn-default"" href=""/Web/Pagina3"">3</a>", resultado.ToString()
-                    );
+                    @"<a class=""btn btn-default"" href=""Pagina1"">1</a>"
+                + @"<a class=""btn btn-default btn-primary selected"" href=""Pagina2"">2</a>"
+                + @"<a class=""btn btn-default"" href=""Pagina3"">3</a>", resultado.ToString()
+
+            );
 
 
 
