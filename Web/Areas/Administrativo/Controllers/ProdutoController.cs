@@ -26,5 +26,22 @@ namespace Web.Areas.Administrativo.Controllers
                 .FirstOrDefault(p => p.ProdutoId == produtoId);
             return View(produto);
         }
+
+        [HttpPost]
+        public ActionResult Alterar(Produto produto)
+        {
+            if (ModelState.IsValid)
+            {                
+                _repositorio = new ProdutosRepositorio();
+                _repositorio.Salvar(produto);
+
+                TempData["mensagem"] = string.Format("{0} foi salvo com sucesso", produto.Nome);
+
+                return RedirectToAction("Index");
+
+            }
+            return View(produto);
+        }
+
     }
 }
