@@ -49,7 +49,6 @@
                 dataType: 'json',
                 data: { produtoId: id },
                 beforeSend: function () {
-                    var loading = "";
                     var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
                     $('#deleteModal .modal-header h4').after(loading);
                 },
@@ -65,6 +64,7 @@
                     $("#divexcluir").empty();
                     $("#divexcluir").addClass("alert alert-success");
                     $("#divexcluir").html(data.responseText);
+                    $("#loading").remove();
                 }
             });
         });

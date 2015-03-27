@@ -5,6 +5,7 @@ using System.Web.Mvc;
 
 namespace Web.Areas.Administrativo.Controllers
 {
+    [Authorize]
     public class ProdutoController : Controller
     {
 
