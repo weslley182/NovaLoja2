@@ -3,6 +3,7 @@
 
     <div class="modal-dialog">
         <div class="modal-content">
+            <script src="~/Scripts/jquery.blockUI.js"></script>
 
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -48,12 +49,12 @@
                 type: 'post',
                 dataType: 'json',
                 data: { produtoId: id },
-                beforeSend: function () {
+                beforeSend: function () {                    
                     var loading = "<span><em>Excluindo</em>&nbsp;<i class='glyphicon glyphicon-refresh icon-refresh-animate'></i></span>";
                     $('#deleteModal .modal-header h4').after(loading);
                 },
                 success: function () {
-
+                                        
                     $('#deleteModal').modal('hide');
 
                     $(rowNo).animate({ opacity: 0.0 }, 400, function () {
@@ -64,9 +65,12 @@
                     $("#divexcluir").empty();
                     $("#divexcluir").addClass("alert alert-success");
                     $("#divexcluir").html(data.responseText);
-                    $("#loading").remove();
+                    $("#loading").remove();                    
                 }
-            });
+                //$.blockUI();
+                //$.blockUI({ message: '<h1><img src="busy.gif" /> Just a moment...</h1>' });
+                //$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
+            });            
         });
     });
 </script>

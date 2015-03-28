@@ -22,5 +22,10 @@ namespace Dominio.Entidades
 
         [Required(ErrorMessage = "Digite a categoria")]
         public string Categoria { get; set; }
+
+        public byte[] Image { get; set; }
+
+        public string ImageMimeType { get; set; }
+
     }
 }
