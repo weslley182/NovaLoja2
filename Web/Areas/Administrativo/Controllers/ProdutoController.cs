@@ -1,16 +1,16 @@
 ﻿using Dominio.Entidades;
 using Dominio.Repositorio;
 using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 
-namespace Web.Areas.Administrativo.Controllers
+namespace Quiron.LojaVirtual.Web.Areas.Administrativo.Controllers
 {
+
     [Authorize]
     public class ProdutoController : Controller
     {
-
         private ProdutosRepositorio _repositorio;
-
 
         public ActionResult Index()
         {
@@ -25,14 +25,16 @@ namespace Web.Areas.Administrativo.Controllers
             _repositorio = new ProdutosRepositorio();
             Produto produto = _repositorio.Produtos
                 .FirstOrDefault(p => p.ProdutoId == produtoId);
+
             return View(produto);
         }
 
+
         [HttpPost]
-        public ActionResult Alterar(Produto produto)
+        public ActionResult Alterar(Produto produto, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
-            {                
+            {
                 _repositorio = new ProdutosRepositorio();
                 _repositorio.Salvar(produto);
 
@@ -66,9 +68,11 @@ namespace Web.Areas.Administrativo.Controllers
         //}
 
 
+
         [HttpPost]
         public JsonResult Excluir(int produtoId)
         {
+            // System.Threading.Thread.Sleep(TimeSpan.FromSeconds(5));
 
             string mensagem = string.Empty;
             _repositorio = new ProdutosRepositorio();
