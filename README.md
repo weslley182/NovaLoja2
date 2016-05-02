@@ -1,6 +1,3 @@
-# NovaLoja2
+# Nova Loja
 
-$.blockUI();
-$.blockUI({ message: '<h1><img src="busy.gif" /> Just a moment...</h1>' });
-$(document).ajaxStart($.blockUI).ajaxStop($.unblockUI);
-http://malsup.com/jquery/block/
+Loja virtual criada em C#
